@@ -1,0 +1,647 @@
+[
+  {
+    "street": "Kaakkovuorentie",
+    "folder": "D:\\Fiveth\\Project_semester_automn_2025\\Marjetas_Data\\Marjetas_Data\\JKL WS100\\Data\\Kaakkovuorentie",
+    "csv_files_count": 4,
+    "csv_files": [
+      "Kaakkovuorentie_202404-202406.csv",
+      "Kaakkovuorentie_202407-202412.csv",
+      "Kaakkovuorentie_202501-202506.csv",
+      "Kaakkovuorentie_202507-202509.csv"
+    ],
+    "row_count": 101772,
+    "start_timestamp": "2024-04-02 08:15:00",
+    "end_timestamp": "2025-09-18 09:49:27",
+    "nat_count": 0,
+    "duplicates": 26976,
+    "missing_expected_columns": [],
+    "negative_precip_diff_count": 0,
+    "total_precip_mm": 828.6500000000001,
+    "nonzero_precip_count": 7213,
+    "precipitationType_counts": {
+      "0": 86456,
+      "70": 8252,
+      "60": 4237,
+      "67": 2246,
+      "69": 581
+    },
+    "median_sampling_interval_seconds": 600.0,
+    "mean_sampling_interval_seconds": 617.0535838459481,
+    "sampling_interval_count": 101771,
+    "cumulative_resets_count": 6,
+    "preview_head": [
+      {
+        "Timestamp": "2024-04-02 08:15:00",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 36.78,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202404-202406.csv"
+      },
+      {
+        "Timestamp": "2024-04-02 08:25:02",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 36.78,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202404-202406.csv"
+      },
+      {
+        "Timestamp": "2024-04-02 08:35:00",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 36.78,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202404-202406.csv"
+      },
+      {
+        "Timestamp": "2024-04-02 08:45:02",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 36.78,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202404-202406.csv"
+      },
+      {
+        "Timestamp": "2024-04-02 08:55:03",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 36.78,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202404-202406.csv"
+      }
+    ],
+    "preview_tail": [
+      {
+        "Timestamp": "2025-09-18 09:09:26",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 377.63,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202507-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:19:26",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 377.63,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202507-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:29:26",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 377.63,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202507-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:39:27",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 377.63,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202507-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:49:27",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 377.63,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kaakkovuorentie_202507-202509.csv"
+      }
+    ]
+  },
+  {
+    "street": "Kotaniementie",
+    "folder": "D:\\Fiveth\\Project_semester_automn_2025\\Marjetas_Data\\Marjetas_Data\\JKL WS100\\Data\\Kotaniementie",
+    "csv_files_count": 9,
+    "csv_files": [
+      "Kotaniementie_202101-202106.csv",
+      "Kotaniementie_202107-202112.csv",
+      "Kotaniementie_202201-202206.csv",
+      "Kotaniementie_202207-202212.csv",
+      "Kotaniementie_202301-202306.csv",
+      "Kotaniementie_202306-202312.csv",
+      "Kotaniementie_202401-202406.csv",
+      "Kotaniementie_202406-202412.csv",
+      "Kotaniementie_202501-202509.csv"
+    ],
+    "row_count": 330119,
+    "start_timestamp": "2021-01-01 00:03:44",
+    "end_timestamp": "2025-09-18 10:06:27",
+    "nat_count": 0,
+    "duplicates": 80405,
+    "missing_expected_columns": [],
+    "negative_precip_diff_count": 0,
+    "total_precip_mm": 2340.72,
+    "nonzero_precip_count": 26849,
+    "precipitationType_counts": {
+      "0": 290169,
+      "70": 18272,
+      "60": 14544,
+      "67": 4016,
+      "69": 3118
+    },
+    "median_sampling_interval_seconds": 600.0,
+    "mean_sampling_interval_seconds": 595.6847284524191,
+    "sampling_interval_count": 330118,
+    "cumulative_resets_count": 20,
+    "preview_head": [
+      {
+        "Timestamp": "2021-01-01 00:03:44",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 250.46,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:13:44",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 250.46,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 70,
+        "__source_file": "Kotaniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:23:44",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 250.48,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Kotaniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:33:45",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 250.49,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 70,
+        "__source_file": "Kotaniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:43:44",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 250.51,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Kotaniementie_202101-202106.csv"
+      }
+    ],
+    "preview_tail": [
+      {
+        "Timestamp": "2025-09-18 09:26:26",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 208.16,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:36:26",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 208.16,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:46:27",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 208.16,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:56:27",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 208.16,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:06:27",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 208.16,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Kotaniementie_202501-202509.csv"
+      }
+    ]
+  },
+  {
+    "street": "Saaritie",
+    "folder": "D:\\Fiveth\\Project_semester_automn_2025\\Marjetas_Data\\Marjetas_Data\\JKL WS100\\Data\\Saaritie",
+    "csv_files_count": 9,
+    "csv_files": [
+      "Saaritie_202101-202106.csv",
+      "Saaritie_202107-202112.csv",
+      "Saaritie_202201-202206.csv",
+      "Saaritie_202207-202212.csv",
+      "Saaritie_202301-202306.csv",
+      "Saaritie_202307-202312.csv",
+      "Saaritie_202401-202406.csv",
+      "Saaritie_202407-202412.csv",
+      "Saaritie_202501-202509.csv"
+    ],
+    "row_count": 326985,
+    "start_timestamp": "2021-01-01 00:00:40",
+    "end_timestamp": "2025-09-18 09:29:53",
+    "nat_count": 0,
+    "duplicates": 82397,
+    "missing_expected_columns": [],
+    "negative_precip_diff_count": 0,
+    "total_precip_mm": 1952.2499999999998,
+    "nonzero_precip_count": 23811,
+    "precipitationType_counts": {
+      "0": 285433,
+      "70": 15395,
+      "60": 13544,
+      "67": 9733,
+      "69": 2880
+    },
+    "median_sampling_interval_seconds": 600.0,
+    "mean_sampling_interval_seconds": 608.3042041415641,
+    "sampling_interval_count": 326984,
+    "cumulative_resets_count": 16,
+    "preview_head": [
+      {
+        "Timestamp": "2021-01-01 00:00:40",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 160.92,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Saaritie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:10:46",
+        "precipitationIntensity_mm_h": 0.3,
+        "precipitationIntensity_mm_min": 0.005,
+        "precipitationQuantityAbs_mm": 160.94,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Saaritie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:20:41",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 160.96,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Saaritie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:30:50",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 160.97,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 69,
+        "__source_file": "Saaritie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:40:43",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 160.97,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202101-202106.csv"
+      }
+    ],
+    "preview_tail": [
+      {
+        "Timestamp": "2025-09-18 08:49:53",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 305.34,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 08:59:53",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 305.34,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:09:53",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 305.34,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:19:53",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 305.34,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:29:53",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 305.34,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Saaritie_202501-202509.csv"
+      }
+    ]
+  },
+  {
+    "street": "Tähtiniementie",
+    "folder": "D:\\Fiveth\\Project_semester_automn_2025\\Marjetas_Data\\Marjetas_Data\\JKL WS100\\Data\\Tähtiniementie",
+    "csv_files_count": 9,
+    "csv_files": [
+      "Tähtiniementie_202101-202106.csv",
+      "Tähtiniementie_202107-202112.csv",
+      "Tähtiniementie_202201-202206.csv",
+      "Tähtiniementie_202207-202212.csv",
+      "Tähtiniementie_202301-202306.csv",
+      "Tähtiniementie_202307-202312.csv",
+      "Tähtiniementie_202401-202406.csv",
+      "Tähtiniementie_202407-202412.csv",
+      "Tähtiniementie_202501-202509.csv"
+    ],
+    "row_count": 304151,
+    "start_timestamp": "2021-01-01 00:00:43",
+    "end_timestamp": "2025-09-18 10:40:12",
+    "nat_count": 0,
+    "duplicates": 57908,
+    "missing_expected_columns": [],
+    "negative_precip_diff_count": 0,
+    "total_precip_mm": 2285.21,
+    "nonzero_precip_count": 25685,
+    "precipitationType_counts": {
+      "0": 271005,
+      "60": 15196,
+      "70": 10375,
+      "67": 4719,
+      "69": 2856
+    },
+    "median_sampling_interval_seconds": 600.0,
+    "mean_sampling_interval_seconds": 604.047358738075,
+    "sampling_interval_count": 304150,
+    "cumulative_resets_count": 43,
+    "preview_head": [
+      {
+        "Timestamp": "2021-01-01 00:00:43",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 33.73,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Tähtiniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:10:44",
+        "precipitationIntensity_mm_h": 0.2,
+        "precipitationIntensity_mm_min": 0.003,
+        "precipitationQuantityAbs_mm": 33.75,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Tähtiniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:20:43",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 33.76,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 70,
+        "__source_file": "Tähtiniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:30:44",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 33.77,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 70,
+        "__source_file": "Tähtiniementie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:40:44",
+        "precipitationIntensity_mm_h": 0.2,
+        "precipitationIntensity_mm_min": 0.003,
+        "precipitationQuantityAbs_mm": 33.78,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 70,
+        "__source_file": "Tähtiniementie_202101-202106.csv"
+      }
+    ],
+    "preview_tail": [
+      {
+        "Timestamp": "2025-09-18 10:00:12",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 86.0,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tähtiniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:10:12",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 86.0,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tähtiniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:20:12",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 86.0,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tähtiniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:30:12",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 86.0,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tähtiniementie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:40:12",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 86.0,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tähtiniementie_202501-202509.csv"
+      }
+    ]
+  },
+  {
+    "street": "Tuulimyllyntie",
+    "folder": "D:\\Fiveth\\Project_semester_automn_2025\\Marjetas_Data\\Marjetas_Data\\JKL WS100\\Data\\Tuulimyllyntie",
+    "csv_files_count": 9,
+    "csv_files": [
+      "Tuulimyllyntie_202101-202106.csv",
+      "Tuulimyllyntie_202107-202112.csv",
+      "Tuulimyllyntie_202201-202206.csv",
+      "Tuulimyllyntie_202207-202212.csv",
+      "Tuulimyllyntie_202301-202306.csv",
+      "Tuulimyllyntie_202307-202312.csv",
+      "Tuulimyllyntie_202401-202406.csv",
+      "Tuulimyllyntie_202407-202412.csv",
+      "Tuulimyllyntie_202501-202509.csv"
+    ],
+    "row_count": 340081,
+    "start_timestamp": "2021-01-01 00:03:41",
+    "end_timestamp": "2025-09-18 10:24:11",
+    "nat_count": 0,
+    "duplicates": 90494,
+    "missing_expected_columns": [],
+    "negative_precip_diff_count": 0,
+    "total_precip_mm": 2499.06,
+    "nonzero_precip_count": 30026,
+    "precipitationType_counts": {
+      "0": 299630,
+      "60": 15600,
+      "70": 12767,
+      "67": 9158,
+      "69": 2926
+    },
+    "median_sampling_interval_seconds": 600.0,
+    "mean_sampling_interval_seconds": 596.008872111755,
+    "sampling_interval_count": 340080,
+    "cumulative_resets_count": 16,
+    "preview_head": [
+      {
+        "Timestamp": "2021-01-01 00:03:41",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 507.53,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 70,
+        "__source_file": "Tuulimyllyntie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:13:42",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 507.54,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:23:41",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 507.54,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:33:41",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 507.54,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202101-202106.csv"
+      },
+      {
+        "Timestamp": "2021-01-01 00:43:42",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 507.54,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202101-202106.csv"
+      }
+    ],
+    "preview_tail": [
+      {
+        "Timestamp": "2025-09-18 09:44:11",
+        "precipitationIntensity_mm_h": 0.1,
+        "precipitationIntensity_mm_min": 0.002,
+        "precipitationQuantityAbs_mm": 52.12,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 60,
+        "__source_file": "Tuulimyllyntie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 09:54:11",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 52.14,
+        "precipitationQuantityDiff_mm": 0.02,
+        "precipitationType": 60,
+        "__source_file": "Tuulimyllyntie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:04:11",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 52.15,
+        "precipitationQuantityDiff_mm": 0.01,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:14:11",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 52.15,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202501-202509.csv"
+      },
+      {
+        "Timestamp": "2025-09-18 10:24:11",
+        "precipitationIntensity_mm_h": 0.0,
+        "precipitationIntensity_mm_min": 0.0,
+        "precipitationQuantityAbs_mm": 52.15,
+        "precipitationQuantityDiff_mm": 0.0,
+        "precipitationType": 0,
+        "__source_file": "Tuulimyllyntie_202501-202509.csv"
+      }
+    ]
+  }
+]

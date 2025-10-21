@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_de5d69d6eccc5bca4cb89b819d7b6220 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_de5d69d6eccc5bca4cb89b819d7b6220" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_de5d69d6eccc5bca4cb89b819d7b6220 = L.map(
+                "map_de5d69d6eccc5bca4cb89b819d7b6220",
+                {
+                    center: [62.211111, 25.75256],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_90e43270480eda58f335826a21c144fe = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_90e43270480eda58f335826a21c144fe.addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var marker_0b5281b744bd7e38013a6b6ddc1cacb6 = L.marker(
+                [62.211111, 25.752563],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_29e0f57ae806ee2d1487883f27a8bf08 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9dea6233e70266fdb478014e40ff8086 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c9724ef3a6b0c659e4adeb0e5d20b19 = $(`<div id="html_5c9724ef3a6b0c659e4adeb0e5d20b19" style="width: 100.0%; height: 100.0%;"><b>LHT65004</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_9dea6233e70266fdb478014e40ff8086.setContent(html_5c9724ef3a6b0c659e4adeb0e5d20b19);
+            
+        
+
+        marker_0b5281b744bd7e38013a6b6ddc1cacb6.bindPopup(popup_9dea6233e70266fdb478014e40ff8086)
+        ;
+
+        
+    
+    
+                marker_0b5281b744bd7e38013a6b6ddc1cacb6.setIcon(icon_29e0f57ae806ee2d1487883f27a8bf08);
+            
+    
+            var marker_b986352f843cc7c2f72e90f1f10571ed = L.marker(
+                [62.197614, 25.720489],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_2b5a807669ea4bd2c950deda290886b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e3feb0fad6edbc9ba520962191bdd834 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f36ab94c191c3e021e299c3d9f8e897b = $(`<div id="html_f36ab94c191c3e021e299c3d9f8e897b" style="width: 100.0%; height: 100.0%;"><b>LHT65005</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_e3feb0fad6edbc9ba520962191bdd834.setContent(html_f36ab94c191c3e021e299c3d9f8e897b);
+            
+        
+
+        marker_b986352f843cc7c2f72e90f1f10571ed.bindPopup(popup_e3feb0fad6edbc9ba520962191bdd834)
+        ;
+
+        
+    
+    
+                marker_b986352f843cc7c2f72e90f1f10571ed.setIcon(icon_2b5a807669ea4bd2c950deda290886b1);
+            
+    
+            var marker_ab253e4d65a27054fd074aacd14c623c = L.marker(
+                [62.265198, 25.89008],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_20b94596bad447440ae483c77b809444 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e850c496e6bc45f3cedf6a469326a86 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1af2c37c09d309615e2ca386ac8a2f63 = $(`<div id="html_1af2c37c09d309615e2ca386ac8a2f63" style="width: 100.0%; height: 100.0%;"><b>LHT65006</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_5e850c496e6bc45f3cedf6a469326a86.setContent(html_1af2c37c09d309615e2ca386ac8a2f63);
+            
+        
+
+        marker_ab253e4d65a27054fd074aacd14c623c.bindPopup(popup_5e850c496e6bc45f3cedf6a469326a86)
+        ;
+
+        
+    
+    
+                marker_ab253e4d65a27054fd074aacd14c623c.setIcon(icon_20b94596bad447440ae483c77b809444);
+            
+    
+            var marker_bb414f31bb2f39dee95060d474b27911 = L.marker(
+                [62.286678, 25.74533],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_1cf643495b6486db11747d0b16a86d47 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ddf58352a85f0b8f1c2dbf40659b186 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c0881419b96d469886d8cd84cbcf9a0a = $(`<div id="html_c0881419b96d469886d8cd84cbcf9a0a" style="width: 100.0%; height: 100.0%;"><b>LHT65007</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_7ddf58352a85f0b8f1c2dbf40659b186.setContent(html_c0881419b96d469886d8cd84cbcf9a0a);
+            
+        
+
+        marker_bb414f31bb2f39dee95060d474b27911.bindPopup(popup_7ddf58352a85f0b8f1c2dbf40659b186)
+        ;
+
+        
+    
+    
+                marker_bb414f31bb2f39dee95060d474b27911.setIcon(icon_1cf643495b6486db11747d0b16a86d47);
+            
+    
+            var marker_424fc5c8fe05e8456a8b9a843715c874 = L.marker(
+                [62.227604, 25.736853],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_7a99f97fb1b36d154c1a8f59b29018d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9c9f7d59b4532539df6a40b97552fc0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7cddba05fd1fa136812b62291bd2da5b = $(`<div id="html_7cddba05fd1fa136812b62291bd2da5b" style="width: 100.0%; height: 100.0%;"><b>LHT65008</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_e9c9f7d59b4532539df6a40b97552fc0.setContent(html_7cddba05fd1fa136812b62291bd2da5b);
+            
+        
+
+        marker_424fc5c8fe05e8456a8b9a843715c874.bindPopup(popup_e9c9f7d59b4532539df6a40b97552fc0)
+        ;
+
+        
+    
+    
+                marker_424fc5c8fe05e8456a8b9a843715c874.setIcon(icon_7a99f97fb1b36d154c1a8f59b29018d5);
+            
+    
+            var marker_d0c1ff87a3ca8e21d55d6168766458f2 = L.marker(
+                [62.222971, 25.804673],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_18b9120203e1afd7f992aa6b6fef5190 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a0a097a9887188fc29063156377e23ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_866c8190c9fe75f63a59eea076047a01 = $(`<div id="html_866c8190c9fe75f63a59eea076047a01" style="width: 100.0%; height: 100.0%;"><b>LHT65009</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_a0a097a9887188fc29063156377e23ce.setContent(html_866c8190c9fe75f63a59eea076047a01);
+            
+        
+
+        marker_d0c1ff87a3ca8e21d55d6168766458f2.bindPopup(popup_a0a097a9887188fc29063156377e23ce)
+        ;
+
+        
+    
+    
+                marker_d0c1ff87a3ca8e21d55d6168766458f2.setIcon(icon_18b9120203e1afd7f992aa6b6fef5190);
+            
+    
+            var marker_96843c5d998b34f3499e5523e4d27b6c = L.marker(
+                [62.260777, 25.693876],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_4dcaaa98a4765edef7e082705b5cfdbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92e0b45db3cd08b82b1abe9ee27daa0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d4c83cca10dc680d99bdb37848fd788 = $(`<div id="html_9d4c83cca10dc680d99bdb37848fd788" style="width: 100.0%; height: 100.0%;"><b>LHT65010</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_92e0b45db3cd08b82b1abe9ee27daa0b.setContent(html_9d4c83cca10dc680d99bdb37848fd788);
+            
+        
+
+        marker_96843c5d998b34f3499e5523e4d27b6c.bindPopup(popup_92e0b45db3cd08b82b1abe9ee27daa0b)
+        ;
+
+        
+    
+    
+                marker_96843c5d998b34f3499e5523e4d27b6c.setIcon(icon_4dcaaa98a4765edef7e082705b5cfdbc);
+            
+    
+            var marker_d237efddb896d8ba7a9989a366852c05 = L.marker(
+                [62.234563, 25.672774],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_fd175f26f7478b1728e4c83e45ae9007 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "snowflake",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b92616af3dd54bda9ccb8e2bfb12311 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_841b49b9ca6cd56cd44c027b9848824b = $(`<div id="html_841b49b9ca6cd56cd44c027b9848824b" style="width: 100.0%; height: 100.0%;"><b>LHT65013</b><br>Humidity</b><br>Temperature</b></div>`)[0];
+                popup_1b92616af3dd54bda9ccb8e2bfb12311.setContent(html_841b49b9ca6cd56cd44c027b9848824b);
+            
+        
+
+        marker_d237efddb896d8ba7a9989a366852c05.bindPopup(popup_1b92616af3dd54bda9ccb8e2bfb12311)
+        ;
+
+        
+    
+    
+                marker_d237efddb896d8ba7a9989a366852c05.setIcon(icon_fd175f26f7478b1728e4c83e45ae9007);
+            
+    
+            var marker_9a1e0a56d5c36781ec11331e9a710fe0 = L.marker(
+                [62.136788, 25.762473],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_4dc4f2bc2b25b27602ae3528fdb975ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dce5d4e158c46bdabf966c5fcb39e70f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd8f412260506f4a7d3c6d0395a2d2ab = $(`<div id="html_cd8f412260506f4a7d3c6d0395a2d2ab" style="width: 100.0%; height: 100.0%;">                     <b>WS100: Saaritie</b>                     <br>precipitationIntensity_mm_h</b>                     <br>precipitationIntensity_mm_min</b>                     <br>precipitationQuantityAbs_mm</b>                     <br>precipitationQuantityDiff_mm</b>                     <br>precipitationType</b>                     </div>`)[0];
+                popup_dce5d4e158c46bdabf966c5fcb39e70f.setContent(html_cd8f412260506f4a7d3c6d0395a2d2ab);
+            
+        
+
+        marker_9a1e0a56d5c36781ec11331e9a710fe0.bindPopup(popup_dce5d4e158c46bdabf966c5fcb39e70f)
+        ;
+
+        
+    
+    
+                marker_9a1e0a56d5c36781ec11331e9a710fe0.setIcon(icon_4dc4f2bc2b25b27602ae3528fdb975ef);
+            
+    
+            var marker_783b3daf848f08b4ece8464bd3f936f6 = L.marker(
+                [62.221789, 25.695931],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_20c8707f2fa9d4ff1243c202aad77c06 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7e047110c37ab7f8b2701ad68d2ae793 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2fd5f0ec5a44ec5c92788f9089f73208 = $(`<div id="html_2fd5f0ec5a44ec5c92788f9089f73208" style="width: 100.0%; height: 100.0%;">                     <b>WS100: Tuulimyllyntie</b>                     <br>precipitationIntensity_mm_h</b>                     <br>precipitationIntensity_mm_min</b>                     <br>precipitationQuantityAbs_mm</b>                     <br>precipitationQuantityDiff_mm</b>                     <br>precipitationType</b>                     </div>`)[0];
+                popup_7e047110c37ab7f8b2701ad68d2ae793.setContent(html_2fd5f0ec5a44ec5c92788f9089f73208);
+            
+        
+
+        marker_783b3daf848f08b4ece8464bd3f936f6.bindPopup(popup_7e047110c37ab7f8b2701ad68d2ae793)
+        ;
+
+        
+    
+    
+                marker_783b3daf848f08b4ece8464bd3f936f6.setIcon(icon_20c8707f2fa9d4ff1243c202aad77c06);
+            
+    
+            var marker_08d34424cc7d889adcbf93c50fb3f334 = L.marker(
+                [62.011127, 25.552755],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_213ca6f8e09b462e6455f901af4e9898 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a53ea5089c6a2d032153fa3bec2ab0f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c860a9c98b43a7a22687d7ecd57cfa06 = $(`<div id="html_c860a9c98b43a7a22687d7ecd57cfa06" style="width: 100.0%; height: 100.0%;">                     <b>WS100: TÃhtiniementie</b>                     <br>precipitationIntensity_mm_h</b>                     <br>precipitationIntensity_mm_min</b>                     <br>precipitationQuantityAbs_mm</b>                     <br>precipitationQuantityDiff_mm</b>                     <br>precipitationType</b>                     </div>`)[0];
+                popup_a53ea5089c6a2d032153fa3bec2ab0f7.setContent(html_c860a9c98b43a7a22687d7ecd57cfa06);
+            
+        
+
+        marker_08d34424cc7d889adcbf93c50fb3f334.bindPopup(popup_a53ea5089c6a2d032153fa3bec2ab0f7)
+        ;
+
+        
+    
+    
+                marker_08d34424cc7d889adcbf93c50fb3f334.setIcon(icon_213ca6f8e09b462e6455f901af4e9898);
+            
+    
+            var marker_3b888ddae6b5008c3ade9b2ff1e81f0c = L.marker(
+                [62.294362, 25.800196],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_14d93198987dc27dd0152b29aef3a6c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bbc3de044281c6ad52c6794f0575aa59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ded10f969ae46abfe9caad15c9648236 = $(`<div id="html_ded10f969ae46abfe9caad15c9648236" style="width: 100.0%; height: 100.0%;">                     <b>WS100: Kaakkovuorentie</b>                     <br>precipitationIntensity_mm_h</b>                     <br>precipitationIntensity_mm_min</b>                     <br>precipitationQuantityAbs_mm</b>                     <br>precipitationQuantityDiff_mm</b>                     <br>precipitationType</b>                     </div>`)[0];
+                popup_bbc3de044281c6ad52c6794f0575aa59.setContent(html_ded10f969ae46abfe9caad15c9648236);
+            
+        
+
+        marker_3b888ddae6b5008c3ade9b2ff1e81f0c.bindPopup(popup_bbc3de044281c6ad52c6794f0575aa59)
+        ;
+
+        
+    
+    
+                marker_3b888ddae6b5008c3ade9b2ff1e81f0c.setIcon(icon_14d93198987dc27dd0152b29aef3a6c3);
+            
+    
+            var marker_4eae9fb9a37738db4dbb6a889872b698 = L.marker(
+                [62.265705, 25.909542],
+                {
+}
+            ).addTo(map_de5d69d6eccc5bca4cb89b819d7b6220);
+        
+    
+            var icon_39877b4d37d6da1aa6491d1dea767f53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d49e594c90eb34957b9a634b8633561 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c2b90dae549028ca85c69b7c1f3b0e1 = $(`<div id="html_7c2b90dae549028ca85c69b7c1f3b0e1" style="width: 100.0%; height: 100.0%;">                     <b>WS100: Kotaniementie</b>                     <br>precipitationIntensity_mm_h</b>                     <br>precipitationIntensity_mm_min</b>                     <br>precipitationQuantityAbs_mm</b>                     <br>precipitationQuantityDiff_mm</b>                     <br>precipitationType</b>                     </div>`)[0];
+                popup_6d49e594c90eb34957b9a634b8633561.setContent(html_7c2b90dae549028ca85c69b7c1f3b0e1);
+            
+        
+
+        marker_4eae9fb9a37738db4dbb6a889872b698.bindPopup(popup_6d49e594c90eb34957b9a634b8633561)
+        ;
+
+        
+    
+    
+                marker_4eae9fb9a37738db4dbb6a889872b698.setIcon(icon_39877b4d37d6da1aa6491d1dea767f53);
+            
+</script>
+</html>
