@@ -1,0 +1,156 @@
+/* MetricCard.css */
+
+.metric-card {
+    position: relative;
+    background: linear-gradient(145deg, #f9fafb, #ffffff);
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px 26px;
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 160px;
+}
+
+/* Hover Effect: Lift and Deepen Shadow */
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 22px 50px rgba(15, 23, 42, 0.16),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+/* Active Effect: Press Down */
+.metric-card:active {
+    transform: translateY(-1px) scale(0.99);
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.10),
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    transition-duration: 0.1s;
+}
+
+/* Entry Animation */
+@keyframes cardEntry {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.metric-card {
+    animation: cardEntry 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+/* Staggered entry delays */
+.metric-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.metric-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.metric-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.metric-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+/* Icon Chip */
+.metric-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.metric-card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Icon Gradients */
+.metric-card-icon.temp {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+}
+
+.metric-card-icon.humidity {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.metric-card-icon.vpd {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.metric-card-icon.rh90 {
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+/* Subtle Glow */
+.metric-card-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(8px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* Typography */
+.metric-card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-left: 2px;
+}
+
+.metric-card-subtext {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.metric-card-period {
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    margin-top: auto;
+    padding-top: 12px;
+    font-style: italic;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    .metric-card,
+    .metric-card:hover,
+    .metric-card:active {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+}

@@ -1,0 +1,81 @@
+/* === Global Design Tokens (Light cards + Dark map shell) === */
+:root {
+  /* Neutrals */
+  --bg-page: #F3F4F6;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F9FAFB;
+  --border-subtle: #E5E7EB;
+  --text-primary: #111827;
+  --text-muted: #6B7280;
+  --text-muted-alt: #4B5563;
+
+  /* Dark shell */
+  --bg-shell: #020617;
+  --border-shell: #1F2937;
+  --shell-text: #E5E7EB;
+  --shell-text-dim: #9CA3AF;
+
+  /* Primary & Status */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-soft: #DBEAFE;
+  --primary-tint: #E5EDFF; /* hover background for nav & toggles */
+  --success: #22C55E;
+  --warning: #FACC15;
+  --info: #38BDF8;
+
+  /* KPI Gradients (keep brand accent flair) */
+  --kpi-temp: linear-gradient(135deg,#F97316,#FACC15);
+  --kpi-humidity: linear-gradient(135deg,#38BDF8,#6366F1);
+  --kpi-rain: linear-gradient(135deg,#A855F7,#38BDF8);
+  --kpi-sensors: linear-gradient(135deg,#22C55E,#14B8A6);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(17,24,39,0.04);
+  --shadow-md: 0 2px 6px rgba(17,24,39,0.08);
+  --shadow-lg: 0 4px 16px rgba(17,24,39,0.12);
+  --shadow-topbar: 0 2px 4px rgba(17,24,39,0.08);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Typography Scale */
+  --font-family-base: system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px; /* section titles */
+  --font-size-xxl: 24px; /* page h1 */
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+}
+
+/* === Utility Classes === */
+.token-surface { background: var(--bg-card); }
+.token-border { border: 1px solid var(--border-subtle); }
+.token-rounded { border-radius: var(--radius-lg); }
+.token-shadow { box-shadow: var(--shadow-sm); }
+.token-text-muted { color: var(--text-muted); }
+.token-text-strong { color: var(--text-primary); }
+
+/* Focus Ring (Accessible) */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* === Micro-interaction Animations === */
+@keyframes fade-slide-up { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+@keyframes skeleton-shimmer { 0% { background-position:200% 0; } 100% { background-position:-200% 0; } }
+
+.enter-section { animation: fade-slide-up 0.24s cubic-bezier(0.22,0.61,0.36,1) both; }
+.enter-delay-1 { animation-delay: 40ms; }
+.enter-delay-2 { animation-delay: 80ms; }
+.enter-delay-3 { animation-delay: 120ms; }
+
+.skeleton { background: linear-gradient(90deg,#E5E7EB 0%,#F3F4F6 20%,#E5E7EB 40%); background-size:200% 100%; animation: skeleton-shimmer 1100ms linear infinite; border-radius: var(--radius-md); }
+
+/* Reduced Motion: disable non-essential animations */
+@media (prefers-reduced-motion: reduce) {
+  .enter-section, .card-enter, .skeleton { animation: none !important; transform: none !important; }
+}

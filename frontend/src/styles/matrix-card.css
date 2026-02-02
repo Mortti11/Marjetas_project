@@ -1,0 +1,170 @@
+/* ===== NETWORK COMPARISON MATRIX CARD ===== */
+
+.ws100-matrix-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.matrix-card-header {
+    margin-bottom: 24px;
+}
+
+.matrix-card-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 6px;
+}
+
+.matrix-subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0 0 16px;
+    padding: 10px 16px;
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    border-radius: 6px;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+}
+
+.matrix-table thead th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.matrix-table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.matrix-table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.matrix-table thead th.text-right {
+    text-align: right;
+}
+
+.matrix-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+}
+
+.matrix-table tbody tr.even {
+    background: #fafbfc;
+}
+
+.matrix-table tbody tr.odd {
+    background: #ffffff;
+}
+
+.matrix-table tbody tr:hover {
+    background: #f0f9ff;
+    transition: background-color 120ms ease;
+}
+
+.matrix-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.matrix-table td.text-right {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 13px;
+}
+
+.matrix-table td.station-name {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Color Cues for Positive/Negative Values */
+.matrix-value-positive {
+    color: #16a34a;
+    font-weight: 500;
+}
+
+.matrix-value-negative {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* Responsive Design for Matrix */
+@media (max-width: 1024px) {
+    .ws100-matrix-card {
+        padding: 24px 20px;
+    }
+
+    .matrix-tab-control {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .matrix-tab-button {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .matrix-tab-control {
+        flex-wrap: wrap;
+    }
+
+    .matrix-table {
+        font-size: 13px;
+    }
+
+    .matrix-table thead th {
+        font-size: 11px;
+        padding: 12px 12px;
+    }
+
+    .matrix-table tbody td {
+        padding: 12px 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ws100-matrix-card {
+        padding: 20px 16px;
+    }
+
+    .matrix-card-header h3 {
+        font-size: 18px;
+    }
+
+    .matrix-table thead th,
+    .matrix-table tbody td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .matrix-tab-button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}

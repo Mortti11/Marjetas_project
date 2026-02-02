@@ -1,0 +1,130 @@
+/* ===== METRIC TABS WITH BLUE PILL DESIGN ===== */
+
+.ws100-metric-tabs {
+    display: inline-flex;
+    gap: 8px;
+    padding: 5px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 9999px;
+}
+
+.ws100-metric-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    color: #64748B;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+}
+
+.ws100-metric-tab__icon {
+    color: #94A3B8;
+    transition: color 150ms ease;
+}
+
+.ws100-metric-tab:hover:not(.ws100-metric-tab--active) {
+    background: rgba(37, 99, 235, 0.06);
+    color: #2563EB;
+}
+
+.ws100-metric-tab:hover:not(.ws100-metric-tab--active) .ws100-metric-tab__icon {
+    color: #2563EB;
+}
+
+.ws100-metric-tab:focus {
+    outline: 2px solid #2563EB;
+    outline-offset: 2px;
+}
+
+.ws100-metric-tab--active {
+    background: #2563EB;
+    color: #FFFFFF;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+}
+
+.ws100-metric-tab--active .ws100-metric-tab__icon {
+    color: #FFFFFF;
+}
+
+/* Metric Section - Vertical Layout */
+.metric-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metric-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748B;
+    margin: 0;
+}
+
+/* Matrix Tab Control */
+.matrix-tab-control {
+    display: inline-flex;
+    gap: 8px;
+    padding: 5px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+}
+
+.matrix-tab-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    color: #64748B;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+}
+
+.matrix-tab-button:hover:not(.matrix-tab-button--active) {
+    background: rgba(37, 99, 235, 0.06);
+    color: #2563EB;
+}
+
+.matrix-tab-button:focus {
+    outline: 2px solid #2563EB;
+    outline-offset: 2px;
+}
+
+.matrix-tab-button--active {
+    background: #2563EB;
+    color: #FFFFFF;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+}
+
+/* Matrix Table */
+.matrix-table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+.matrix-note {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 16px;
+    padding: 10px 16px;
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    border-radius: 6px;
+}

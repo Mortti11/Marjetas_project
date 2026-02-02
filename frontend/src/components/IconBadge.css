@@ -1,0 +1,82 @@
+/* IconBadge Component Styles */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.icon-badge__icon {
+  display: block;
+}
+
+/* Size variants */
+.icon-badge--sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.icon-badge--sm .icon-badge__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-badge--md {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.icon-badge--md .icon-badge__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-badge--lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+}
+
+.icon-badge--lg .icon-badge__icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Color variants - softer, lighter tints */
+.icon-badge--blue {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+
+.icon-badge--green {
+  background-color: #f0fdf4;
+  color: #22c55e;
+}
+
+.icon-badge--orange {
+  background-color: #fff7ed;
+  color: #f97316;
+}
+
+.icon-badge--purple {
+  background-color: #faf5ff;
+  color: #a855f7;
+}
+
+.icon-badge--slate {
+  background-color: #f8fafc;
+  color: #64748b;
+}
+
+.icon-badge--cyan {
+  background-color: #f0fdfa;
+  color: #14b8a6;
+}
+
+.icon-badge--amber {
+  background-color: #fffbeb;
+  color: #f59e0b;
+}

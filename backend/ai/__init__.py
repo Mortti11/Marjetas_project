@@ -1,0 +1,2 @@
+# backend/ai/__init__.py
+# AI module initialization
