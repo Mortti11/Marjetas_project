@@ -1,7 +1,4 @@
-"""Forecast service: small utilities to load and summarize 10-day hourly forecast CSV.
 
-This module follows the simple patterns used in other services (lht_service, ws100_service).
-"""
 from pathlib import Path
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -12,14 +9,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
-def _load_forecast_df() -> pd.DataFrame | None:
-    """
-    Load forecast CSV, parse 'time' and ensure timestamps are timezone-aware in Europe/Helsinki.
-
-    Implements the same fallback logic as before (configured path -> legacy file in CLEANED_DATA_ROOT).
-    Returns None if file missing or parsing fails.
-    """
+def _load_forecast_df():
+   
     try:
         p = Path(FORECAST_DATA_PATH)
         if not p.exists():
@@ -29,7 +20,6 @@ def _load_forecast_df() -> pd.DataFrame | None:
             else:
                 raise FileNotFoundError(f"Forecast CSV not found at {FORECAST_DATA_PATH}")
 
-        # Read without forcing tz parsing; we'll normalize afterwards
         df = pd.read_csv(p, parse_dates=["time"])
 
         helsinki = ZoneInfo("Europe/Helsinki")
@@ -51,14 +41,6 @@ def _load_forecast_df() -> pd.DataFrame | None:
 
 
 def _split_current_and_window(df: pd.DataFrame):
-    """
-    Given a forecast dataframe with tz-aware 'time', return (current_row_series, window_df).
-
-    current: single pandas Series for the current hour (now rounded down to hour). If exact match
-    is missing, returns the nearest future row. If still missing, returns (None, None).
-
-    window: dataframe with rows from now (inclusive) to now + 10 days (inclusive).
-    """
     tz = ZoneInfo("Europe/Helsinki")
     now = datetime.now(tz).replace(minute=0, second=0, microsecond=0)
     end = now + timedelta(days=10)
@@ -94,19 +76,8 @@ def _split_current_and_window(df: pd.DataFrame):
     return current, window
 
 
-def summary_10d() -> dict:
-    """
-    Return JSON containing current hour values and 10-day aggregates.
-
-    Structure:
-    {
-      "has_data": True/False,
-      "current": {"timestamp": iso, "temp_C": float, "rh_pct": float},
-      "summary_10d": { ... same aggregates as before ... }
-    }
-    """
+def summary_10d():
     df = _load_forecast_df()
-
     empty_result = {"has_data": False}
     if df is None:
         return empty_result
@@ -141,8 +112,8 @@ def summary_10d() -> dict:
             "current": {
                 "timestamp": current["time"].isoformat(),
                 "temp_C": curr_temp,
-                "rh_pct": curr_rh,
-            },
+                "rh_pct": curr_rh,},
+
             # flat current_* fields
             "current_time": current["time"].isoformat(),
             "current_temp": float(curr_temp) if curr_temp is not None else None,
@@ -155,9 +126,7 @@ def summary_10d() -> dict:
                 "high_rh_pct": float(high_rh_pct) if high_rh_pct is not None else None,
                 "total_rain_mm": float(total_rain),
                 "rainy_hours": int(rainy_hours),
-                "total_snow_mm": float(total_snow),
-            },
-        }
+                "total_snow_mm": float(total_snow),},}
     except Exception:
         logger.exception("Failed to aggregate forecast summary")
         return empty_result
