@@ -54,13 +54,13 @@ def _split_current_and_window(df: pd.DataFrame):
     # Window for 10-day summary
     window = df[(df["time"] >= now) & (df["time"] <= end)].copy()
 
-    # Debug print window bounds
+    # Log window bounds
     if not window.empty:
         first_ts = window["time"].iloc[0]
         last_ts = window["time"].iloc[-1]
-        print(f"[forecast_service] using forecast window from {first_ts} to {last_ts} (requested {now} -> {end})")
+        logger.debug(f"Using forecast window from {first_ts} to {last_ts} (requested {now} -> {end})")
     else:
-        print(f"[forecast_service] no forecast rows in window {now} -> {end}")
+        logger.warning(f"No forecast rows in window {now} -> {end}")
 
     # Current hour row – prefer the first row in the window with time >= now (truncated)
     # If none found, fall back to the last available row in the window.

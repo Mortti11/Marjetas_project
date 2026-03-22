@@ -97,20 +97,12 @@ export default function MapPage() {
         .then(data => {
           if (data) setForecastSummary(data);
         })
-        .catch(() => { });
+        .catch((err) => {
+          console.warn('Forecast refresh failed:', err);
+        });
     }, 30 * 60 * 1000);
 
     return () => clearInterval(id);
-  }, []);
-
-  // Dedicated fetch for forecast summary on mount (keeps logic explicit)
-  useEffect(() => {
-    fetch('/api/forecast/summary')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (data) setForecastSummary(data);
-      })
-      .catch(() => { });
   }, []);
 
   // Log forecast usage for debugging in browser console
