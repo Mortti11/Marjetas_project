@@ -574,9 +574,10 @@
 .filter-group input {
   padding: 6px 10px;
   font-size: 14px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .controls-row {
@@ -2639,8 +2640,6 @@
     .legend-box--low {
       background: linear-gradient(135deg, #22c55e, #4ade80);
     }
-
-    ```css
   }
 
   .matrix-value-negative {

@@ -57,7 +57,7 @@ export default function LhtPage() {
   useEffect(() => {
     async function fetchSensorList() {
       try {
-        const res = await fetch('http://localhost:8000/api/lht/list');
+        const res = await fetch('/api/lht/list');
         if (!res.ok) throw new Error('Failed to fetch sensor list');
 
         const data = await res.json();
@@ -76,7 +76,7 @@ export default function LhtPage() {
 
     async function fetchNetworkSummary() {
       try {
-        const res = await fetch('http://localhost:8000/api/lht/network-summary');
+        const res = await fetch('/api/lht/network-summary');
         if (res.ok) {
           const data = await res.json();
           setNetworkData(data);
@@ -95,7 +95,7 @@ export default function LhtPage() {
     setLoading(true);
     try {
       const summaryRes = await fetch(
-        `http://localhost:8000/api/lht/sensor-summary?sensor=${encodeURIComponent(sensorName)}`
+        `/api/lht/sensor-summary?sensor=${encodeURIComponent(sensorName)}`
       );
       if (summaryRes.ok) {
         const data = await summaryRes.json();
@@ -103,7 +103,7 @@ export default function LhtPage() {
       }
 
       const yearsRes = await fetch(
-        `http://localhost:8000/api/lht/sensor-timeseries?sensor=${encodeURIComponent(sensorName)}&freq=M`
+        `/api/lht/sensor-timeseries?sensor=${encodeURIComponent(sensorName)}&freq=M`
       );
       if (yearsRes.ok) {
         const data = await yearsRes.json();
@@ -145,7 +145,7 @@ export default function LhtPage() {
     setChartLoading(true);
     try {
       // Fetch site_summary with current selections
-      let summaryUrl = `http://localhost:8000/api/lht/sensor-summary?sensor=${encodeURIComponent(selectedSensor)}`;
+      let summaryUrl = `/api/lht/sensor-summary?sensor=${encodeURIComponent(selectedSensor)}`;
       if (selectedYear) {
         summaryUrl += `&year=${selectedYear}`;
       }
@@ -165,7 +165,7 @@ export default function LhtPage() {
       // Fetch chart data based on view mode
       if (viewMode === 'year') {
         const res = await fetch(
-          `http://localhost:8000/api/lht/sensor-timeseries?sensor=${encodeURIComponent(selectedSensor)}&year=${selectedYear}&freq=M`
+          `/api/lht/sensor-timeseries?sensor=${encodeURIComponent(selectedSensor)}&year=${selectedYear}&freq=M`
         );
         if (res.ok) {
           const data = await res.json();
@@ -182,7 +182,7 @@ export default function LhtPage() {
           });
         }
       } else if (viewMode === 'month') {
-        const url = `http://localhost:8000/api/lht/sensor-timeseries?sensor=${encodeURIComponent(selectedSensor)}&year=${selectedYear}&freq=D`;
+        const url = `/api/lht/sensor-timeseries?sensor=${encodeURIComponent(selectedSensor)}&year=${selectedYear}&freq=D`;
         console.log('[LHT Debug] Month view - fetching URL:', url);
         console.log('[LHT Debug] Month view - viewMode:', viewMode, 'selectedMonth:', selectedMonth, 'type:', typeof selectedMonth);
         const res = await fetch(url);
@@ -220,7 +220,7 @@ export default function LhtPage() {
       } else if (viewMode === 'day') {
         const dateStr = `${selectedYear}-${String(selectedMonth).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}`;
         const res = await fetch(
-          `http://localhost:8000/api/lht/sensor-daily-detail?sensor=${encodeURIComponent(selectedSensor)}&date=${dateStr}`
+          `/api/lht/sensor-daily-detail?sensor=${encodeURIComponent(selectedSensor)}&date=${dateStr}`
         );
         if (res.ok) {
           const data = await res.json();

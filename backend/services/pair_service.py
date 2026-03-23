@@ -1,13 +1,9 @@
 from pathlib import Path
+from functools import lru_cache
 import numpy as np
-import math
-from collections.abc import Mapping, Sequence
 
 import pandas as pd
-from fastapi import FastAPI, HTTPException
-from backend.services import pair_service
 
-import numpy as np 
 from backend.config import LHT_DATA_DIR, WS100_DATA_DIR, WIND_DATA_PATH
 from backend.core.io_lht import clean_lht_sensor, aggregate_lht_hourly
 from backend.core.io_ws100 import clean_ws100_sensor, aggregate_ws100_hourly
@@ -24,6 +20,33 @@ from backend.services import lht_service, ws100_service
 
 DEFAULT_LHT = "Kaunisharjuntie"
 DEFAULT_WS100 = "Kotaniementie"
+
+
+@lru_cache(maxsize=16)
+def _load_pair_hourly_cached(lht_sensor: str, ws100_sensor: str) -> pd.DataFrame:
+    """Build the merged hourly pair dataset once per sensor pair for reuse across analysis endpoints."""
+    lht_path = Path(LHT_DATA_DIR) / f"{lht_sensor}.csv"
+    lht_raw = pd.read_csv(lht_path)
+    lht_clean = clean_lht_sensor(lht_raw)
+    lht_hourly = aggregate_lht_hourly(lht_clean)
+
+    ws_path = Path(WS100_DATA_DIR) / f"df_{ws100_sensor}.csv"
+    ws_raw = pd.read_csv(ws_path)
+    ws_clean = clean_ws100_sensor(ws_raw, rain_col="precipitationQuantityDiff_mm")
+    ws_hourly = aggregate_ws100_hourly(ws_clean)
+
+    wind_hourly = load_wind_hourly(WIND_DATA_PATH)
+
+    pair_hourly = build_pair_hourly(lht_hourly, ws_hourly, wind_hourly)
+    pair_hourly = add_environment_flags(pair_hourly)
+    return pair_hourly.sort_values("timestamp").reset_index(drop=True)
+
+
+@lru_cache(maxsize=16)
+def _detect_events_cached(lht_sensor: str, ws100_sensor: str) -> pd.DataFrame:
+    """Reuse detected events for repeated event-based analysis on the same sensor pair."""
+    pair_hourly = _load_pair_hourly_cached(lht_sensor, ws100_sensor)
+    return detect_events(pair_hourly).reset_index(drop=True)
 
 
 def demo_analysis() -> dict:
@@ -104,44 +127,6 @@ def _safe_float_matrix(matrix) -> list[list[float | None]]:
         safe_rows.append(safe_row)
     return safe_rows
 
-def _make_json_safe(obj):
-    """
-    Recursively convert a nested structure (dict/list/tuple/values)
-    into something that json.dumps(..., allow_nan=False) accepts:
-    - Replace NaN / +/-inf with None
-    - Convert pandas/NumPy scalars to plain Python types
-    - Convert Timestamps/datetimes to ISO strings
-    - Leave ints/str/bool/None as-is
-    - Convert unknown types to str(...)
-    """
-    # Floats: kill NaN/inf
-    if isinstance(obj, float):
-        return float(obj) if math.isfinite(obj) else None
-
-    # Basic types
-    if obj is None or isinstance(obj, (int, str, bool)):
-        return obj
-
-    # Pandas / numpy scalars
-    if isinstance(obj, (np.floating, np.integer)):
-        v = float(obj)
-        return v if math.isfinite(v) else None
-
-    # Timestamps / datetimes
-    if isinstance(obj, (pd.Timestamp,)):
-        return obj.isoformat()
-
-    # Mappings (dict-like)
-    if isinstance(obj, Mapping):
-        return {str(k): _make_json_safe(v) for k, v in obj.items()}
-
-    # Sequences (list/tuple) but not strings/bytes
-    if isinstance(obj, Sequence) and not isinstance(obj, (str, bytes, bytearray)):
-        return [_make_json_safe(v) for v in obj]
-
-    # Fallback: string representation
-    return str(obj)
-
 
 def compute_daily_summary(df_day: pd.DataFrame) -> dict:
     """
@@ -200,26 +185,7 @@ def pair_hourly_preview(
     with environment flags, and return a lightweight JSON preview.
     """
 
-    # --- LHT ---
-    lht_path = Path(LHT_DATA_DIR) / f"{lht_sensor}.csv"
-    lht_raw = pd.read_csv(lht_path)
-    lht_clean = clean_lht_sensor(lht_raw)
-    lht_hourly = aggregate_lht_hourly(lht_clean)
-
-    # --- WS100 ---
-    ws_path = Path(WS100_DATA_DIR) / f"df_{ws100_sensor}.csv"
-    ws_raw = pd.read_csv(ws_path)
-    ws_clean = clean_ws100_sensor(ws_raw, rain_col="precipitationQuantityDiff_mm")
-    ws_hourly = aggregate_ws100_hourly(ws_clean)
-
-    # --- Wind (single global station) ---
-    wind_hourly = load_wind_hourly(WIND_DATA_PATH)
-
-    # --- Merge + flags ---
-    pair_hourly = build_pair_hourly(lht_hourly, ws_hourly, wind_hourly)
-    pair_hourly = add_environment_flags(pair_hourly)
-
-    pair_hourly = pair_hourly.sort_values("timestamp")
+    pair_hourly = _load_pair_hourly_cached(lht_sensor, ws100_sensor).copy()
     if max_hours is not None:
         pair_hourly = pair_hourly.tail(max_hours)
 
@@ -280,21 +246,7 @@ def pair_daily_analysis(
             "hourly": [ array of hourly records for the day ]
         }
     """
-    # Load and merge all data (same as pair_hourly_preview)
-    lht_path = Path(LHT_DATA_DIR) / f"{lht_sensor}.csv"
-    lht_raw = pd.read_csv(lht_path)
-    lht_clean = clean_lht_sensor(lht_raw)
-    lht_hourly = aggregate_lht_hourly(lht_clean)
-
-    ws_path = Path(WS100_DATA_DIR) / f"df_{ws100_sensor}.csv"
-    ws_raw = pd.read_csv(ws_path)
-    ws_clean = clean_ws100_sensor(ws_raw, rain_col="precipitationQuantityDiff_mm")
-    ws_hourly = aggregate_ws100_hourly(ws_clean)
-
-    wind_hourly = load_wind_hourly(WIND_DATA_PATH)
-
-    pair_hourly = build_pair_hourly(lht_hourly, ws_hourly, wind_hourly)
-    pair_hourly = add_environment_flags(pair_hourly)
+    pair_hourly = _load_pair_hourly_cached(lht_sensor, ws100_sensor).copy()
 
     # Filter to the target date
     pair_hourly["date_str"] = pair_hourly["timestamp"].dt.strftime("%Y-%m-%d")
@@ -395,25 +347,10 @@ def pair_event_aggregates(
       5. Aggregate environment metrics & wet/dry fractions.
       6. Build RH heatmap for event dates (restricted to date_str).
     """
-    # --- Load & merge (same logic as pair_daily_analysis) ---
-    lht_path = Path(LHT_DATA_DIR) / f"{lht_sensor}.csv"
-    lht_raw = pd.read_csv(lht_path)
-    lht_clean = clean_lht_sensor(lht_raw)
-    lht_hourly = aggregate_lht_hourly(lht_clean)
-
-    ws_path = Path(WS100_DATA_DIR) / f"df_{ws100_sensor}.csv"
-    ws_raw = pd.read_csv(ws_path)
-    ws_clean = clean_ws100_sensor(ws_raw, rain_col="precipitationQuantityDiff_mm")
-    ws_hourly = aggregate_ws100_hourly(ws_clean)
-
-    wind_hourly = load_wind_hourly(WIND_DATA_PATH)
-
-    pair_hourly = build_pair_hourly(lht_hourly, ws_hourly, wind_hourly)
-    pair_hourly = add_environment_flags(pair_hourly)
-    pair_hourly = pair_hourly.sort_values("timestamp")
+    pair_hourly = _load_pair_hourly_cached(lht_sensor, ws100_sensor).copy()
 
     # --- Detect events over full record ---
-    events_df = detect_events(pair_hourly)
+    events_df = _detect_events_cached(lht_sensor, ws100_sensor).copy()
 
     # --- Filter events for target date ---
     date_events = events_df[events_df["start_date"] == date_str].copy()
@@ -509,4 +446,3 @@ def pair_event_aggregates(
 
     # Final safety net: clean EVERYTHING before FastAPI sees it
     return _deep_clean(result)
-

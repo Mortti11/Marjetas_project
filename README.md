@@ -1,36 +1,101 @@
-# Marjetas Project
+# Jyväskylä Weather & Sensor Dashboard
 
-A weather monitoring and road safety forecasting system for Jyväskylä, Finland.
+A local weather dashboard I built to explore how precipitation events, humidity, and wind conditions affect road surfaces in Jyväskylä, Finland.
 
-## What It Does
-
-This system helps predict slippery road conditions by:
-
-- Collecting data from temperature, humidity, and precipitation sensors
-- Detecting rain and snow events
-- Calculating when roads will dry after precipitation
-- Showing road risk levels on a dashboard
+The app connects two city sensor networks (LHT temperature/humidity sensors and WS100 precipitation gauges) with Open-Meteo forecast data, and lets me inspect individual rain events, drying behaviour, and environmental patterns through an interactive UI.
 
 ---
 
-## Quick Start
+## Why I built this
 
-### Requirements
+I live in Jyväskylä and wanted to answer a deceptively simple question: after it rains, how long does it actually take for roads to dry — and what conditions make that faster or slower?
 
-- Python 3.9+
-- Node.js 18+
+The city already publishes sensor data from two networks (LHT and WS100), but none of it is easy to explore together. So I cleaned the datasets, paired sensors by proximity, and built a dashboard that shows what happens before, during, and after individual precipitation events.
 
-### Run the Backend
+This started as a data cleaning exercise and grew into a full-stack project. It is not a production system — it is a portfolio piece that reflects how I approach messy real-world data.
+
+---
+
+## What the app does
+
+The dashboard has four main pages:
+
+### Overview
+
+![Overview page](docs/screenshots/overview.png)
+
+The landing page. Shows current weather conditions, a short forecast snapshot, and an interactive Leaflet map with all sensor locations plotted. Each sensor type (LHT, WS100, Airport) can be toggled independently. This page gives a quick orientation before diving into the detail pages.
+
+### LHT Sensors
+
+![LHT page](docs/screenshots/lht.png)
+
+Focused on the LHT sensor network: temperature, relative humidity, and VPD (vapour pressure deficit) for a selected station. Includes time-series charts with a date range filter, monthly summary cards, and a network-wide comparison matrix so you can see how one location differs from the rest. The 7 LHT stations are spread across different parts of the city — residential streets, hillsides, sheltered areas — so the differences are real and visible.
+
+### WS100 Sensors
+
+![WS100 page](docs/screenshots/ws100.png)
+
+Focused on the WS100 precipitation network: rain totals, precipitation duration, and per-station summaries. Includes monthly bar charts, a station selector, and a deviation matrix that highlights which stations consistently run above or below the network mean. The 5 WS100 gauges cover enough of the city to show meaningful spatial variation.
+
+### Analyze
+
+![Analyze page](docs/screenshots/analyze.png)
+
+The deepest page. This is where the event-based analysis lives. You pick a date, an LHT sensor, a WS100 sensor, and a time window (hours before and after the event start). The backend detects precipitation events from the WS100 data, then pairs them with humidity and wind conditions from the LHT and Open-Meteo datasets.
+
+The page shows:
+- **Event summary cards** — total rainfall, duration, intensity class, precipitation type
+- **Wet/dry fraction chart** — how road surface wetness evolves hour by hour relative to the event
+- **Environment means chart** — humidity, dew-point spread, wind, pressure around the event window
+- **RH heatmap** — relative humidity by hour-of-day for the event date(s)
+- **Distance matrix** — physical distances between all sensors, used to validate pairing choices
+- **Season drying strip** — median drying times broken out by season
+
+The Analyze page auto-loads with sensible defaults on first visit (Kaunisharjuntie + Kotaniementie, 2024-09-17), so you see real data immediately without needing to configure anything.
+
+---
+
+## One real event: July 28, 2023
+
+To show what the app actually produces, here is a real example.
+
+On July 28, 2023, Jyväskylä experienced a significant multi-day rain event. When I run that date through the Analyze page (Keilonkankaatie + Tuulimyllyntie, 72 h post-event window), the app detects one extreme-intensity event:
+
+- **101 mm total precipitation**
+- **42 hours duration**
+- **100 % wet fraction** for the entire 72-hour post-event window — roads never dried
+- **Wind gusts up to 52 km/h**, pressure dropping to ~975 hPa
+
+Yle reported on flooding in the Jyväskylä region around the same time. The rainfall totals my app calculated are in the same range as what was reported. That alignment gave me confidence that the event detection and aggregation logic is working correctly — but I want to be clear: this is not a validated meteorological tool. It is a student project that happens to produce plausible numbers for a known weather event.
+
+---
+
+## Tech stack
+    
+| Layer | Tools |
+|-------|-------|
+| Backend | Python, FastAPI, pandas, NumPy |
+| Frontend | React 19, Vite, Chart.js, Recharts, Leaflet, react-router-dom |
+| Data | Open-Meteo API (historical + forecast), city LHT and WS100 CSV exports |
+| UI details | lucide-react icons, chartjs-plugin-zoom, chartjs-plugin-annotation, framer-motion |
+
+---
+
+## How to run locally
+
+**Requirements:** Python 3.12+, Node.js 18+
+
+### Backend
 
 ```bash
 cd backend
-pip install fastapi uvicorn pandas numpy
-python app.py
+pip install -r requirements.txt
+cd ..
+python -m uvicorn backend.app:app --reload --host 127.0.0.1 --port 8000
 ```
 
-The API runs at `http://localhost:8000`
-
-### Run the Frontend
+### Frontend
 
 ```bash
 cd frontend
@@ -38,160 +103,67 @@ npm install
 npm run dev
 ```
 
-The dashboard runs at `http://localhost:5173`
+The frontend dev server proxies `/api` requests to the backend automatically.
+
+| | URL |
+|---|---|
+| Frontend | `http://localhost:5173` |
+| Backend API | `http://localhost:8000` |
+| API docs (Swagger) | `http://localhost:8000/docs` |
 
 ---
 
-## Project Structure
+## Project structure
 
 ```
-Marjetas_project/
-├── backend/              # Python API server
-│   ├── app.py            # Main application
-│   ├── core/             # Physics and calculations
-│   ├── services/         # Business logic
-│   └── routes/           # API endpoints
-├── frontend/             # React dashboard
-│   └── src/
-│       ├── pages/        # Main views
-│       └── components/   # UI components
-├── cleaned_datasets/     # Processed sensor data
-│   ├── LHT/              # Temperature/humidity sensors
-│   └── wes100/           # Precipitation sensors
-└── Marjetas_Data/        # Raw sensor data
+backend/
+  app.py                  FastAPI entry point and route registration
+  config.py               Data directory paths
+  core/                   Event detection, physics calculations, data I/O
+  services/               Business logic (pair analysis, sensor metadata, etc.)
+  routes/                 Route modules (road forecast)
+
+frontend/
+  src/
+    pages/                Page components (Overview, LHT, WS100, Analyze, RoadForecast)
+    components/           Shared UI: charts, map, cards, layout
+    styles/               Additional CSS modules
+
+cleaned_datasets/         Processed CSV files the app reads at runtime
+  LHT/                   7 station files (temperature, humidity)
+  wes100/                5 station files (precipitation)
+
+Marjetas_Data/            Raw source data and reference material
+Data/                     Local analysis outputs (not used by the app)
+Data- analytics/          Jupyter notebooks for exploratory work
+docs/screenshots/         Screenshots used in this README
 ```
 
 ---
 
-## Sensors
+## Data sources
 
-### LHT Sensors (7 locations)
-Measure temperature and humidity. Located at:
-- Hameenpohjantie, Hikipolku, Kaunisharjuntie, Keilonkankaantie
-- Keltimaentie, Ritopohantie, Survontie
+- **LHT sensors** — 7 temperature/humidity stations operated by the city of Jyväskylä. Data exported as CSV and cleaned in notebooks before use.
+- **WS100 sensors** — 5 precipitation gauges (Lufft WS100) from the same city network. Same cleaning process.
+- **Open-Meteo** — Historical hourly weather data and forecast data fetched via their free API. Used for wind, pressure, and forecast overlays.
 
-### WS100 Sensors (5 locations)
-Measure rain and snow. Located at:
-- Kaakkovuorentie, Kotaniementie, Saaritie
-- Tahtiniementie, Tuulimyllyntie
-
-### Wind Station
-Provides wind speed and direction data.
-
-### Weather Forecast
-Live forecasts from Open-Meteo API.
+All data is stored as local CSV files. There is no live ingestion pipeline — the app reads pre-cleaned static files.
 
 ---
 
-## Main Features
+## Current limitations
 
-### Road Risk Assessment
-Calculates a slipperiness score (0-100) based on:
-- Recent precipitation
-- Freezing temperatures (-4°C to +1°C)
-- Black ice conditions
-- Time of day (higher risk during commute hours)
+I want to be upfront about what this project does not do:
 
-### Event Detection
-Groups rainy/snowy hours into events and tracks:
-- Event duration and total precipitation
-- Time until roads dry
-
-### Dashboard Pages
-
-| Page | What It Shows |
-|------|---------------|
-| Map | Sensor locations on a map |
-| LHT | Temperature and humidity data |
-| WS100 | Precipitation data |
-| Analyze | Weather event analysis |
-| Road Forecast | Road risk predictions |
-| Storm Signatures | Storm pattern analysis |
-
----
-
-## API Endpoints
-
-### Sensor Data
-- `GET /api/lht/list` - List temperature sensors
-- `GET /api/ws100/list` - List precipitation sensors
-- `GET /api/lht/sensor-summary?sensor=NAME` - Get sensor stats
-- `GET /api/ws100/sensor-summary?sensor=NAME` - Get sensor stats
-
-### Analysis
-- `GET /api/analyze/pair-hourly` - Merged sensor data with weather flags
-- `GET /api/analyze/pair-daily?date=YYYY-MM-DD` - Daily analysis
-- `GET /api/analyze/event-aggregates?date=YYYY-MM-DD` - Event details
-
-### Forecasts
-- `GET /api/forecast/summary` - 10-day weather forecast
-- `GET /api/road-forecast/city` - Road risk forecast
-
-### Docs
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
-
----
-
-## How It Works
-
-### Wetness Detection
-A surface is wet when:
-- Rain > 0.2 mm/hour, OR
-- Humidity ≥ 90% AND temperature is close to dew point
-
-### Drying Detection
-A surface is considered dry when ALL of these are true:
-- No rain (or only trace amounts)
-- Humidity below 88%
-- Temperature is well above dew point
-- Some wind present
-
-### Black Ice Risk
-High risk when:
-- Temperature between -4°C and +1°C
-- Surface was wet recently
-- Humidity above 95%
-
----
-
-## Data Files
-
-| Type | Location |
-|------|----------|
-| Temperature/Humidity | `cleaned_datasets/LHT/*.csv` |
-| Precipitation | `cleaned_datasets/wes100/df_*.csv` |
-| Wind | `cleaned_datasets/cleaned_wind_data.csv` |
-| Raw Data | `Marjetas_Data/` |
-
----
-
-## Tech Stack
-
-**Backend:**
-- Python
-- FastAPI
-- Pandas, NumPy
-
-**Frontend:**
-- React 19
-- Vite
-- Chart.js, Recharts
-- Leaflet (maps)
-- Tailwind CSS
-
----
-
-## Tests
-
-Run backend tests:
-```bash
-cd backend
-python -m pytest tests/
-```
+- **No live data pipeline.** Everything runs on pre-cleaned CSV exports. If I wanted fresh data, I would need to re-export and re-clean manually.
+- **Road Forecast page is unfinished.** The page exists and loads data, but the risk model behind it is too rough to present as reliable. I left it in the codebase but I am not showcasing it.
+- **No automated tests.** The backend logic has been manually verified against known events, but there is no test suite.
+- **Single-city scope.** All sensor locations are in Jyväskylä. The architecture does not generalize to other cities without rework.
+- **Event detection is threshold-based.** It works well for clear rain events but can split or merge ambiguous drizzle periods. I tuned the thresholds for this dataset, not for universal use.
 
 ---
 
 ## License
 
-Internal project - licensing to be determined.
+This is a personal portfolio project. The sensor data belongs to the city of Jyväskylä. Open-Meteo data is used under their free tier terms.
+

@@ -61,7 +61,7 @@ ChartJS.register(
 
 export default function AnalyzePage() {
     // Form state with defaults
-    const [date, setDate] = useState('2024-09-18'); // Default date with known events
+    const [date, setDate] = useState('2024-09-17'); // Verified event start date with current backend semantics
     const [lhtSensor, setLhtSensor] = useState('Kaunisharjuntie');
     const [ws100Sensor, setWs100Sensor] = useState('Kotaniementie');
     const [preH, setPreH] = useState(6);
@@ -107,8 +107,8 @@ export default function AnalyzePage() {
         async function fetchSensors() {
             try {
                 const [lhtRes, ws100Res] = await Promise.all([
-                    fetch('http://localhost:8000/api/lht/list'),
-                    fetch('http://localhost:8000/api/ws100/list'),
+                    fetch('/api/lht/list'),
+                    fetch('/api/ws100/list'),
                 ]);
 
                 if (lhtRes.ok && ws100Res.ok) {
@@ -125,14 +125,19 @@ export default function AnalyzePage() {
         fetchSensors();
     }, []);
 
+    // Auto-fetch on first load with verified defaults
+    useEffect(() => {
+        fetchEventData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     // Fetch event data
     async function fetchEventData() {
         setLoading(true);
         setError(null);
-        setData(null);
 
         try {
-            const url = `http://localhost:8000/api/analyze/event-aggregates?date=${date}&lht_sensor=${encodeURIComponent(lhtSensor)}&ws100_sensor=${encodeURIComponent(ws100Sensor)}&pre_h=${preH}&post_h=${postH}`;
+            const url = `/api/analyze/event-aggregates?date=${date}&lht_sensor=${encodeURIComponent(lhtSensor)}&ws100_sensor=${encodeURIComponent(ws100Sensor)}&pre_h=${preH}&post_h=${postH}`;
             const res = await fetch(url);
 
             if (!res.ok) {
@@ -706,13 +711,23 @@ export default function AnalyzePage() {
                     }}
                 >
                     <div className="filter-group">
-                        <label htmlFor="analyze-date">Date</label>
+                        <label htmlFor="analyze-date">Event start date</label>
                         <input
                             id="analyze-date"
                             type="date"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                         />
+                        <div
+                            style={{
+                                marginTop: '6px',
+                                fontSize: '12px',
+                                color: '#64748b',
+                                lineHeight: 1.4,
+                            }}
+                        >
+                            The backend currently filters events by their start date.
+                        </div>
                     </div>
                     <div className="filter-group">
                         <label htmlFor="analyze-lht">LHT Sensor</label>
@@ -791,9 +806,9 @@ export default function AnalyzePage() {
             </div>
 
             {/* Error State */}
-            {error && !loading && (
+            {error && (
                 <div className="page-error" style={{ margin: '24px 0' }}>
-                    Error: {error}
+                    Error: {error}{data ? ' Showing the previous result below.' : ''}
                 </div>
             )}
 
@@ -823,14 +838,16 @@ export default function AnalyzePage() {
                         fontWeight: '600',
                         color: '#1e40af'
                     }}>
-                        Analyzing event data...
+                        {data ? 'Updating analysis...' : 'Analyzing event data...'}
                     </h3>
                     <p style={{
                         margin: 0,
                         fontSize: '14px',
                         color: '#3b82f6'
                     }}>
-                        This may take a few moments
+                        {data
+                            ? 'Keeping the previous result visible while the new request runs.'
+                            : 'This may take a few moments.'}
                     </p>
                     <style>
                         {`
@@ -842,8 +859,26 @@ export default function AnalyzePage() {
                 </div>
             )}
 
+            {/* Empty state — before first result */}
+            {!data && !loading && !error && (
+                <div style={{
+                    maxWidth: '960px',
+                    margin: '24px auto',
+                    background: '#f8fafc',
+                    borderRadius: '16px',
+                    padding: '40px 24px',
+                    textAlign: 'center',
+                    border: '1px dashed #cbd5e1',
+                }}>
+                    <Sliders size={32} strokeWidth={1.5} style={{ color: '#94a3b8', marginBottom: '12px' }} />
+                    <p style={{ margin: 0, fontSize: '15px', color: '#64748b' }}>
+                        Loading initial analysis...
+                    </p>
+                </div>
+            )}
+
             {/* Data Display */}
-            {data && !loading && !error && (
+            {data && (
                 <>
                     {/* KPI Summary Strip */}
                     <section className="overview-kpis" style={{ marginBottom: '32px' }}>
@@ -1134,7 +1169,7 @@ export default function AnalyzePage() {
                                     textAlign: 'center',
                                     padding: '24px 0',
                                 }}>
-                                    No events detected on this date
+                                    No events start on this date for the selected sensor pair
                                 </div>
                             )}
                         </div>

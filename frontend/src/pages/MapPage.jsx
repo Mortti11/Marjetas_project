@@ -54,9 +54,9 @@ export default function MapPage() {
     };
 
     Promise.all([
-      fetch('http://localhost:8000/api/sensors').then(r => r.json()),
-      fetch('http://localhost:8000/api/lht/demo-summary').then(r => r.json()),
-      fetch('http://localhost:8000/api/ws100/demo-summary').then(r => r.json()),
+      fetch('/api/sensors').then(r => r.json()),
+      fetch('/api/lht/demo-summary').then(r => r.json()),
+      fetch('/api/ws100/demo-summary').then(r => r.json()),
       fetch('/api/forecast/summary').then(r => r.ok ? r.json() : null).catch(() => null),
       fetchWindData(),
     ])
